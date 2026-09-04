@@ -38,8 +38,8 @@ public class KineticToolItem extends Item {
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity player) {
 
-        if (state.getDestroySpeed(level, pos) != 0.0f) {
-            drainAir(player, AIR_PER_BLOCK);
+        if (state.getDestroySpeed(level, pos) != 0.0f && !level.isClientSide) {
+            drainAir(player, getAirPerBlock(state, level, pos));
         }
 
         return super.mineBlock(stack, level, state, pos, player);
@@ -52,5 +52,9 @@ public class KineticToolItem extends Item {
         if (tanks.isEmpty()) return;
 
         BacktankUtil.consumeAir(entity, tanks.getFirst(), amount);
+    }
+
+    private static int getAirPerBlock(BlockState state, Level level, BlockPos pos) {
+        return (int)state.getDestroySpeed(level, pos);
     }
 }

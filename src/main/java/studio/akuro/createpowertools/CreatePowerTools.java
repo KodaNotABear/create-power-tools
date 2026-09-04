@@ -1,11 +1,11 @@
 package studio.akuro.createpowertools;
 
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import studio.akuro.createpowertools.item.KineticToolItem;
@@ -22,5 +22,15 @@ public class CreatePowerTools {
 
     public CreatePowerTools(IEventBus eventBus, ModContainer modContainer) {
         ITEMS.register(eventBus);
+
+        eventBus.addListener(this::addCreativeTabContents);
     }
+
+    private void addCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.insertAfter(new ItemStack(Items.NETHERITE_PICKAXE), KINETIC_PICKAXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        }
+    }
+
+
 }
