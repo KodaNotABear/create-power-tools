@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "create_power_tools:item/kinetic_pickaxe"
+    "layer0": "create_power_tools:item/kinetic_multitool"
   }
 }

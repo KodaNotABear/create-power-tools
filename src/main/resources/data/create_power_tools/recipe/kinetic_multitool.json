@@ -1,0 +1,25 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "P": { "item": "minecraft:diamond_pickaxe" },
+    "A": { "item": "minecraft:diamond_axe" },
+    "S": { "item": "minecraft:diamond_shovel" },
+    "N": { "item": "minecraft:netherite_ingot" },
+    "M": { "item": "create:precision_mechanism" },
+    "D": { "item": "create:mechanical_drill" },
+    "W": { "item": "create:mechanical_saw" },
+    "B": { "item": "create:brass_sheet" },
+    "H": { "item": "create:shaft" }
+  },
+  "pattern": [
+    "PAS",
+    "BNB",
+    "MDM",
+    "BWB",
+    " H "
+  ],
+  "result": { "count": 1, "id": "create_power_tools:kinetic_multitool" },
+  "show_notification": true
+}

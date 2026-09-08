@@ -22,15 +22,19 @@ public class KineticToolItem extends Item {
     //Num blocks able to be mined off one back tank
     private static final int BLOCKS_PER_TANK = 2700;
 
-    public KineticToolItem(Tier tier, TagKey<Block> tagKey, float speed, Properties properties) {
-        super(properties.component(DataComponents.TOOL, buildTool(tier, tagKey, speed)));
+    @SafeVarargs
+    public KineticToolItem(Tier tier, float speed, Properties properties, TagKey<Block>... mineable) {
+        super(properties.component(DataComponents.TOOL, buildTool(tier, speed, mineable)));
     }
 
-    private static Tool buildTool(Tier tier, TagKey<Block> tagKey, float speed) {
+    @SafeVarargs
+    private static Tool buildTool(Tier tier, float speed, TagKey<Block>... mineable) {
         List<Tool.Rule> rules = new ArrayList<>();
-
         rules.add(Tool.Rule.deniesDrops(tier.getIncorrectBlocksForDrops()));
-        rules.add(Tool.Rule.minesAndDrops(tagKey, speed));
+
+        for (TagKey<Block> tag : mineable) {
+            rules.add(Tool.Rule.minesAndDrops(tag, speed));
+        }
 
         return new Tool(rules, 1.0f, 0);
     }

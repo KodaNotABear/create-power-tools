@@ -33,7 +33,11 @@ public class CreatePowerTools {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> BLOCKS_MINED = COMPONENTS.registerComponentType("blocks_mined", builder -> builder.persistent(Codec.INT));
 
     //Items
-    public static final DeferredItem<KineticToolItem> KINETIC_PICKAXE = ITEMS.register("kinetic_pickaxe", () -> new KineticToolItem(Tiers.NETHERITE, BlockTags.MINEABLE_WITH_PICKAXE, 12.0f, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<KineticToolItem> KINETIC_MULTITOOL = ITEMS.register("kinetic_multitool", () -> new KineticToolItem(Tiers.NETHERITE, 12.0f, new Item.Properties().stacksTo((1)),
+            BlockTags.MINEABLE_WITH_PICKAXE,
+            BlockTags.MINEABLE_WITH_AXE,
+            BlockTags.MINEABLE_WITH_SHOVEL,
+            BlockTags.MINEABLE_WITH_HOE));
 
     public CreatePowerTools(IEventBus eventBus, ModContainer modContainer) {
         ITEMS.register(eventBus);
@@ -55,7 +59,7 @@ public class CreatePowerTools {
 
     private void addCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            event.insertAfter(new ItemStack(Items.NETHERITE_PICKAXE), KINETIC_PICKAXE.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(new ItemStack(Items.NETHERITE_PICKAXE), KINETIC_MULTITOOL.toStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 
