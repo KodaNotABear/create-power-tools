@@ -50,6 +50,16 @@ public class KineticToolItem extends Item {
         return super.mineBlock(stack, level, state, pos, player);
     }
 
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getEnchantmentValue(ItemStack stack) {
+        return 15;
+    }
+
     private static void drainAir(ItemStack stack, LivingEntity player) {
         int tankSize = BacktankUtil.maxAirWithoutEnchants();
         int blocksPerAir = Math.max(1, BLOCKS_PER_TANK / tankSize);
