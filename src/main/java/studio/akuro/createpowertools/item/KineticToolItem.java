@@ -17,10 +17,9 @@ import studio.akuro.createpowertools.CreatePowerTools;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KineticToolItem extends Item {
+import static com.simibubi.create.content.equipment.armor.BacktankItem.BAR_COLOR;
 
-    //Num blocks able to be mined off one back tank
-    private static final int BLOCKS_PER_TANK = 2700;
+public class KineticToolItem extends Item {
 
     @SafeVarargs
     public KineticToolItem(Tier tier, float speed, Properties properties, TagKey<Block>... mineable) {
@@ -60,9 +59,24 @@ public class KineticToolItem extends Item {
         return 15;
     }
 
+    @Override
+    public boolean isBarVisible(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getBarWidth(ItemStack stack) {
+        return BacktankUtil.getBarWidth(stack, CreatePowerTools.BLOCKS_PER_TANK.get());
+    }
+
+    @Override
+    public int getBarColor(ItemStack stack) {
+        return BAR_COLOR;
+    }
+
     private static void drainAir(ItemStack stack, LivingEntity player) {
         int tankSize = BacktankUtil.maxAirWithoutEnchants();
-        int blocksPerAir = Math.max(1, BLOCKS_PER_TANK / tankSize);
+        int blocksPerAir = Math.max(1, CreatePowerTools.BLOCKS_PER_TANK.get() / tankSize);
 
         int counter = stack.getOrDefault(CreatePowerTools.BLOCKS_MINED.get(), 0) + 1;
 

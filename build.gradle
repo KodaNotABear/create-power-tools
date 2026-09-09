@@ -138,6 +138,7 @@ dependencies {
     compileOnly "com.simibubi.create:create-${minecraft_version}:${create_version}:slim"
     localRuntime("com.simibubi.create:create-${minecraft_version}:${create_version}") {transitive = false}
     compileOnly "com.tterrag.registrate:Registrate:${registrate_version}"
+    compileOnly "net.createmod.ponder:ponder-neoforge:${ponder_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
 

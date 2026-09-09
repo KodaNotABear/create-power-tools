@@ -1,3 +1,6 @@
 {
-  "item.create_power_tools.kinetic_multitool": "Kinetic Multitool"
+  "item.create_power_tools.kinetic_multitool": "Kinetic Multitool",
+  "item.create_power_tools.kinetic_multitool.tooltip.summary": "A _Pickaxe_, _Shovel_ and _Axe_ in one. Runs on _Pressurised Air_ from a worn _Backtank_.",
+  "item.create_power_tools.kinetic_multitool.tooltip.condition1": "When out of Air",
+  "item.create_power_tools.kinetic_multitool.tooltip.behaviour1": "Mining speed is reduced significantly."
 }
